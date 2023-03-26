@@ -9,20 +9,41 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+let posts = [];
 
 const homeStartingContent =
-  "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque";
+  "HOME_CONTENTLacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque";
 const aboutContent =
-  "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper.";
+  "ABOUT_CONTENT__Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque rhoncus est pellentesque elit ullamcorper.";
 const contactContent =
-  "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis";
+  "CONTACT CONTENT _Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque justo nec ultrices. Arcu dui vivamus arcu felis";
 
 app.get("/", (req, res) => {
-  res.render("home", {
-    homeContent: homeStartingContent,
-    // aboutContent: aboutContent,
-    // contactContent: contactContent,
-  });
+  res.render("home", { homeContent: homeStartingContent });
+  console.log(posts);
+});
+
+app.get("/about", (req, res) => {
+  res.render("about", { aboutContent: aboutContent });
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact", { contactContent: contactContent });
+});
+
+app.get("/compose", (req, res) => {
+  res.render("compose");
+});
+
+app.post("/compose", (req, res) => {
+  const message = req.body.textarea;
+  const title = req.body.publish;
+  const post = {
+    title: title,
+    message: message,
+  };
+  posts.push(post);
+  res.redirect("/");
 });
 
 app.listen(port, () => {
