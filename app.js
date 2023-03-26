@@ -20,8 +20,8 @@ const contactContent =
 app.get("/", (req, res) => {
   res.render("home", {
     homeContent: homeStartingContent,
-    aboutContent: aboutContent,
-    contactContent: contactContent,
+    // aboutContent: aboutContent,
+    // contactContent: contactContent,
   });
 });
 
