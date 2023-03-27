@@ -3,8 +3,8 @@
     <%= homeContent %>
   </p>
 
-
-  <% for (let i=0; i < posts.length; i ++) {%>
+  <!-- Using a for loop -->
+  <!-- <% for (let i=0; i < posts.length; i ++) {%>
     <h5>Title</h5>
     <p>
       <%= posts[i].title %>
@@ -13,5 +13,16 @@
     <p>
       <%= posts[i].message %>
     </p>
-    <% }%>
+    <% }%> -->
+
+  <!-- Using a forEach loop -->
+  <% posts.forEach(element=> { %>
+
+    <h5>
+      Title: <%= element.title %>
+    </h5>
+    <p>
+      Post: <%= element.message %>
+    </p>
+    <% }); %>
       <%- include('partials/footer'); -%>
