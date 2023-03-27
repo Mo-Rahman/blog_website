@@ -16,13 +16,13 @@
     <% }%> -->
 
   <!-- Using a forEach loop -->
-  <% posts.forEach(element=> { %>
+  <% posts.forEach(post=> { %>
 
     <h5>
-      Title: <%= element.title %>
+      <%= post.title %>
     </h5>
     <p>
-      Post: <%= element.message %>
+      Post: <%= post.message %>
     </p>
     <% }); %>
       <%- include('partials/footer'); -%>

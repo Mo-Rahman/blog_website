@@ -49,6 +49,24 @@ app.post("/compose", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/posts/:topic", (req, res) => {
+  // res.send(req.params.posts);
+  const requestedTopic = req.params.topic;
+  posts.forEach((post) => {
+    if (post.title === requestedTopic) {
+      console.log("Match Found");
+      console.log(post.title);
+    } else {
+      console.log("No Match");
+    }
+  });
+  // if (posts[0].title === requestedTopic) {
+  //   console.log("Match Found");
+  // } else {
+  //   console.log("No Match");
+  // }
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
