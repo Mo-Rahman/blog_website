@@ -2,4 +2,16 @@
   <p>
     <%= homeContent %>
   </p>
-  <%- include('partials/footer'); -%>
+
+
+  <% for (let i=0; i < posts.length; i ++) {%>
+    <h5>Title</h5>
+    <p>
+      <%= posts[i].title %>
+    </p>
+    <h5>Post</h5>
+    <p>
+      <%= posts[i].message %>
+    </p>
+    <% }%>
+      <%- include('partials/footer'); -%>

@@ -19,8 +19,11 @@ const contactContent =
   "CONTACT CONTENT _Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque justo nec ultrices. Arcu dui vivamus arcu felis";
 
 app.get("/", (req, res) => {
-  res.render("home", { homeContent: homeStartingContent });
-  console.log(posts);
+  // let title = posts[0].title;
+  // let message = posts[0].message;
+  res.render("home", { homeContent: homeStartingContent, posts: posts });
+  // console.log(title);
+  // console.log(message);
 });
 
 app.get("/about", (req, res) => {
