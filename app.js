@@ -50,23 +50,17 @@ app.post("/compose", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/posts/:topic", (req, res) => {
-  // res.send(req.params.posts);
-  const requestedTopic = req.params.topic;
+app.get("/posts/:topicName", (req, res) => {
+  const requestedTopic = req.params.topicName;
+
   posts.forEach((post) => {
-    if (_.lowerCase(post.title) === _.lowerCase(requestedTopic)) {
+    const postTopic = post.title;
+    const message = post.message;
+    if (_.lowerCase(postTopic) === _.lowerCase(requestedTopic)) {
       console.log("Match Found");
-      // console.log(post.title);
-      console.log(post.title);
-    } else {
-      console.log("No Match");
+      res.render("post", { title: postTopic, message: message });
     }
   });
-  // if (posts[0].title === requestedTopic) {
-  //   console.log("Match Found");
-  // } else {
-  //   console.log("No Match");
-  // }
 });
 
 app.listen(port, () => {
