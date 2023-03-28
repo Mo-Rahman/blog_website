@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const _ = require("lodash");
 
 const app = express();
 const port = 3000;
@@ -53,8 +54,9 @@ app.get("/posts/:topic", (req, res) => {
   // res.send(req.params.posts);
   const requestedTopic = req.params.topic;
   posts.forEach((post) => {
-    if (post.title === requestedTopic) {
+    if (_.lowerCase(post.title) === _.lowerCase(requestedTopic)) {
       console.log("Match Found");
+      // console.log(post.title);
       console.log(post.title);
     } else {
       console.log("No Match");
