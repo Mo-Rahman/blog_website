@@ -1,11 +1,20 @@
-/* button {
-  background-color: red;
-}
-
-input[type="text"] {
+/* input[type="text"] {
   width: 100%;
 }
 
 textarea[name="textarea"] {
   width: 100%;
+} */
+
+/* .truncated>* {
+  display: none;
+}
+
+.truncated>p:first-child {
+  display: block;
+  cursor: pointer;
+}
+
+.truncated>p:first-child::after {
+  content: "\00a0 More…";
 } */

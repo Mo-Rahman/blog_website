@@ -11,7 +11,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 let posts = [];
-
 const homeStartingContent =
   "HOME_CONTENTLacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque";
 const aboutContent =
@@ -22,8 +21,11 @@ const contactContent =
 app.get("/", (req, res) => {
   // let title = posts[0].title;
   // let message = posts[0].message;
-  res.render("home", { homeContent: homeStartingContent, posts: posts });
-  // console.log(title);
+  res.render("home", {
+    homeContent: homeStartingContent,
+    posts: posts,
+  });
+  // console.log(posts);
   // console.log(message);
 });
 
@@ -51,14 +53,18 @@ app.post("/compose", (req, res) => {
 });
 
 app.get("/posts/:topicName", (req, res) => {
-  const requestedTopic = req.params.topicName;
+  let requestedTopic = req.params.topicName;
 
   posts.forEach((post) => {
     const postTopic = post.title;
     const message = post.message;
     if (_.lowerCase(postTopic) === _.lowerCase(requestedTopic)) {
       console.log("Match Found");
-      res.render("post", { title: postTopic, message: message });
+      res.render("post", {
+        title: postTopic,
+        message: message,
+        // topic: requestedTopic,
+      });
     }
   });
 });
